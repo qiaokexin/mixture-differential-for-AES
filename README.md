@@ -1,5 +1,5 @@
 # mixture-differential-for-AES
-This is codes repository for paper "A New Mixture Differential Cryptanalysis on Round-reduced AES" under submission.
+This is codes repository for paper "A New Mixture Differential Cryptanalysis on Round-reduced AES" which is under submission.
 
 
 [MILP]: /MILP
