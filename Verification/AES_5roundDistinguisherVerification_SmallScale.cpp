@@ -273,6 +273,7 @@ int main(int argc, char** argv){
         printf("%lld \n", rand_right);
         //printf("            Probability of right quadruples = 2^(-%0.4f)\n", (log(N2 * N3 * world_size)-log(rand_right))/log(2));
         //cout << " time on clock(): " << ((double)clock() - clock_timer) / CLOCKS_PER_SEC<<endl<<endl;
+        printf("%f \n",((double)clock() - clock_timer) / CLOCKS_PER_SEC);
     }
 
     /*
