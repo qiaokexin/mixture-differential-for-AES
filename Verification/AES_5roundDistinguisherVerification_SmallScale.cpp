@@ -204,17 +204,17 @@ int main(int argc, char** argv){
     outpatt = "s******s**s**s**";
     
     N2 = 1 << 10; //test under N2 keys
-    N3 = 1 << 14; //generate N3 quadruples under each key
+    N3 = 1 << 15; //generate N3 quadruples under each key
     uint8_t masterKey[16];// = {0x1, 0x5, 0x7, 0x7, 0x8, 0x9, 0xA, 0xD, 0xF, 0xC, 0xE, 0xD, 0x7, 0x8, 0xB, 0xD}; 
     
     int seed = stoi(argv[1]); 
     init_prng_mt(0xBE889DB4+seed);
     for(int i = 0; i < 16; i++) masterKey[i] = dis(gen);
     //print_state_col(masterKey);
-    uint16_t rk[4*(rd+1)];
+    uint16_t rk[4*(20+1)];
 
     //Generate round key
-    smallAES_set_encrypt_key(masterKey, rk, rd);
+    smallAES_set_encrypt_key(masterKey, rk, 20);
        
     /*
     For each processor, run 
