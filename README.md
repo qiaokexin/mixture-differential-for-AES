@@ -185,13 +185,13 @@ g++ test_smallScaleAES.cpp fast_smallAES.cpp -o test_smallScaleAES`
 to show the 10-round encryption results of small scale AES.
 
 [MPI]: https://www.mpich.org/
-To run distinguisher verification code, preinstallation is [MPI]. The PRG used is mt19937 engine. To test on $2^{24}\times 64$ quadruples by running 64 processes in parallel (each process tests $2^{24}$ quadruples) for the same randomly generated master key with random seed configured by eg. 5, run
+To run distinguisher verification code, preinstallation is [MPI]. The PRG used is mt19937 engine. To test on $2^{25}\times 32$ quadruples by running 32 processes in parallel (each process tests $2^{25}$ quadruples) for the same randomly generated master key with random seed configured by eg. 5, run
 
 ```
 make
-mpirun -np 64 ./Small_5round 5
+mpirun -np 32 ./Small_5round 5
 ```
-The output is the number of right quadruples for 5-round small scale AES and 20-round small scale AES.
+The output is the number of right quadruples for 5-round small scale AES and 20-round small scale AES, and the running time in seconds.
 
 To verify the mixture distinguisher on 200 randomly generated master keys, run
 
@@ -200,3 +200,14 @@ To verify the mixture distinguisher on 200 randomly generated master keys, run
 `
 
 Then calculate the average probability of the distinguisher.
+
+
+To test the verification on common implemented small-scale AES (from https://github.com/Krypto-iaik/Distinguisher_5RoundAES by Lorenzo Grassi) as an efficiency comparison, firstly compile
+```
+mpicxx  AES_5round_common.cpp -o Small_5round -lm
+```
+then run
+```
+mpirun -np 32 ./Small_5round (seed)
+```
+to test with random seed (seed).
